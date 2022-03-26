@@ -7,8 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="coloPrimary">#008577</color>
+    <color name="coloPrimary">#F5A623</color>
     <color name="coloPrimaryDark">#F5A623</color>
-    <color name="colorAccent">#D81860</color>
+    <color name="colorAccent">#F5A623</color>
     <color name="colorGrey">#7B7B7B</color>
+    
+    <color name="coloTabSelected">#fff</color>
+    <color name="coloTabNormal">#99ffffff</color>
 </resources>

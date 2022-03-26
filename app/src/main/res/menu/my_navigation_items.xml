@@ -18,13 +18,4 @@
         android:icon="@mipmap/search_normal"
         android:title="@string/text_search" />
 
-<!--    <item android:id="@+id/action_search"-->
-<!--        android:title="demo1"-->
-<!--        android:icon="@mipmap/home_normal" />-->
-<!--    <item android:id="@+id/action_settings"-->
-<!--        android:title="demo2"-->
-<!--        android:icon="@mipmap/search_normal" />-->
-<!--    <item android:id="@+id/action_navigation"-->
-<!--        android:title="demo2"-->
-<!--        android:icon="@drawable/home_normal" />-->
 </menu>

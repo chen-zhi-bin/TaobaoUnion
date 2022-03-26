@@ -21,12 +21,6 @@
         app:itemTextColor="@drawable/navigation_bar_color"
         app:labelVisibilityMode="selected"
         app:menu="@menu/my_navigation_items" />
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--       android:id="@+id/main_navigation_bar"-->
-<!--       android:layout_width="match_parent"-->
-<!--       android:layout_height="56dp"-->
-<!--        android:background="@color/white"-->
-<!--       android:layout_gravity="start"-->
-<!--        app:menu="@menu/my_navigation_items" />-->
+
 
 </RelativeLayout>
