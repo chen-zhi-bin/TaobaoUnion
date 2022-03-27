@@ -11,6 +11,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.program.taobaounion.model.domain.Categories;
 import com.program.taobaounion.ui.fragment.HomePagerFragment;
+import com.program.taobaounion.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,9 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        HomePagerFragment homePagerFragment = new HomePagerFragment();
+        LogUtils.d(this,"loadData getItem-->"+position);
+        Categories.DataBean dataBean = categoryList.get(position);
+        HomePagerFragment homePagerFragment =HomePagerFragment.newInstance(dataBean);
         return homePagerFragment;
     }
 
@@ -47,4 +50,5 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
         this.categoryList.addAll(data);
         notifyDataSetChanged();
     }
+
 }

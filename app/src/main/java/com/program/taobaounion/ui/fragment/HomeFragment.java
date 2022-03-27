@@ -1,13 +1,9 @@
 package com.program.taobaounion.ui.fragment;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -49,7 +45,7 @@ public class HomeFragment extends BaseFragment implements IHomeCallback {
     protected void relese() {
         //取消注册
         if (mHomePresenter != null) {
-            mHomePresenter.unregistereCallback(this);
+            mHomePresenter.unregisterViewCallback(this);
         }
     }
 
@@ -57,18 +53,25 @@ public class HomeFragment extends BaseFragment implements IHomeCallback {
     protected void initPresenter() {
         //创建Presenter
         mHomePresenter = new HomePresenterImpl();
-        mHomePresenter.registerCallback(this);
+        mHomePresenter.registerViewCallback(this);
+    }
+
+    @Override
+    protected View loadRootView(LayoutInflater inflater, ViewGroup container) {
+        return inflater.inflate(R.layout.base_home_fragment_layout,container,false);
     }
 
     @Override
     protected void loadData() {
         //加载数据
+        LogUtils.d(this,"loadData---->");
         mHomePresenter.getCategories();
     }
 
     @Override
     public void onCategoriesLoaded(Categories categories) {
         LogUtils.d(this,"onCategoriesLoaded..");
+        setupState(State.SUCCESS);
         //加载的数据就会到这
         if (mHomePagerAdapter != null) {
             mHomePagerAdapter.setCategories(categories);
@@ -88,5 +91,14 @@ public class HomeFragment extends BaseFragment implements IHomeCallback {
     @Override
     public void onEmpty() {
         setupState(State.EMPTY);
+    }
+
+    @Override
+    protected void onRetryClick() {
+        //网络错误，点击重试
+        //重新加载分类
+        if (mHomePresenter != null) {
+            mHomePresenter.getCategories();
+        }
     }
 }

@@ -19,4 +19,8 @@ public class SelectedFragment extends BaseFragment {
     protected int getRootViewResId() {
         return R.layout.fragment_selecter;
     }
+
+    protected void initView(View rootView) {
+        setupState(State.SUCCESS);
+    }
 }
