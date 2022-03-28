@@ -51,6 +51,7 @@ public class CategroyPagerPresenterImpl implements ICateGoryPagerPresenter {
             pagesInfo.put(categoryId,DEFAULT_PAGE);
         }
         String homePagerUrl = UrlUtils.createHomePagerUrl(categoryId, targetPage);
+        LogUtils.d(this,"Url------->"+homePagerUrl);
         LogUtils.d(this,"homePagerUrl-->"+homePagerUrl);
         Call<HomePagerContent> task = api.getHomePagerContent(homePagerUrl);
         task.enqueue(new Callback<HomePagerContent>() {
@@ -59,10 +60,11 @@ public class CategroyPagerPresenterImpl implements ICateGoryPagerPresenter {
                 int code = response.code();
                 LogUtils.d(this,"code-->"+code);
                 if (code== HttpURLConnection.HTTP_OK) {
+                    LogUtils.d(this,"--========================================");
                     HomePagerContent pagerContent = response.body();
                     LogUtils.d(CategroyPagerPresenterImpl.this,"pagerContent-->"+pagerContent);
                     //把数据给到ui
-                    handlerHomePageCContentResult(pagerContent,categoryId);
+                    handlerHomePageContentResult(pagerContent,categoryId);
                 }else {
                     handleNetworkError(categoryId);
                 }
@@ -84,14 +86,18 @@ public class CategroyPagerPresenterImpl implements ICateGoryPagerPresenter {
         }
     }
 
-    private void handlerHomePageCContentResult(HomePagerContent pagerContent, int categoryId) {
+    private void handlerHomePageContentResult(HomePagerContent pagerContent, int categoryId) {
         //通知ui层更新数据
+        List<HomePagerContent.DataBean> data = pagerContent.getData();
         for (ICategoryPagerCallback callback : callbacks) {
             if (callback.getCategoryId()==categoryId) {
                 if (pagerContent==null||pagerContent.getData().size()==0) {
                     callback.onEmpty();
                 }else {
-                    callback.onContentLoaded(pagerContent.getData());
+                    List<HomePagerContent.DataBean> looperData = data.subList(data.size() - 5, data.size());
+                    LogUtils.d(this,"looperData size-->"+looperData.size());
+                    callback.onLooperListLoaded(looperData);
+                    callback.onContentLoaded(data);
                 }
             }
 

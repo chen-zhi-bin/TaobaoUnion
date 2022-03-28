@@ -55,9 +55,17 @@ public abstract class BaseFragment extends Fragment {
         loadStaterView(inflater,container);
         mBind = ButterKnife.bind(this, rootView);
         initView(rootView);
+        initListener();
         initPresenter();
         loadData();
         return rootView;
+    }
+
+    /*
+    如果子类需要设置相关的事件就覆写
+     */
+    protected void initListener(){
+
     }
 
     protected View loadRootView(LayoutInflater inflater, ViewGroup container) {

@@ -5,5 +5,8 @@
     <string name="text_red_packet">特惠</string>
     <string name="text_search">搜索</string>
     <string name="text_netxork_error_tips">网络错误，请点击重试..</string>
+    <string name="text_goods_off_prise">省%1$d元</string>
+    <string name="text_goods_original_prise">￥%1$s</string>
+    <string name="text_goods_sell_count">%1$d人已购买</string>
     <string name="text_search_tips">搜你想搜的宝贝</string>
 </resources>

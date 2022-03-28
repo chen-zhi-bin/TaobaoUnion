@@ -19,6 +19,8 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:layout_marginTop="4dp"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
@@ -35,6 +37,7 @@
             android:padding="2dp"
             android:background="@drawable/shape_tag_bg"
             android:textColor="@color/white"
+
             android:text="省15元"/>
 
         <LinearLayout
@@ -47,15 +50,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/coloPrimary"
+                android:id="@+id/goods_off_price"
                 android:text="券后价:"/>
 
             <TextView
+                android:id="@+id/goods_after_off_prise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/coloPrimary"
                 android:text="19.8"/>
 
             <TextView
+                android:textSize="10sp"
+                android:id="@+id/goods_original_prise"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,6 +70,7 @@
                 android:text="23"/>
 
             <TextView
+                android:id="@+id/goods_sell_count"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
