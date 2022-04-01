@@ -3,6 +3,7 @@ package com.program.taobaounion.ui.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -28,6 +29,10 @@ public class TestActivity extends Activity {
         ButterKnife.bind(this);
         initListenter();
 
+    }
+
+    public void showToast(View view){
+        Toast.makeText(this,"测试..",Toast.LENGTH_SHORT).show();
     }
 
     private void initListenter() {

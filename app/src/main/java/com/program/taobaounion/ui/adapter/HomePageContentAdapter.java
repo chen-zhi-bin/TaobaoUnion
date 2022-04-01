@@ -25,12 +25,18 @@ import butterknife.ButterKnife;
 
 public class HomePageContentAdapter extends RecyclerView.Adapter<HomePageContentAdapter.InnerHolder> {
 
+    private static final String TAG="HomePageContentAdapter";
+
     List<HomePagerContent.DataBean> data=new ArrayList<>();
+
+    private int testCount = 1;
 
     @NonNull
     @Override
     public InnerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_pager_content, parent, false);
+        LogUtils.d(this,"onCreateViewHolder....."+testCount);
+        testCount++;
         return new InnerHolder(itemView);
     }
 
@@ -51,6 +57,14 @@ public class HomePageContentAdapter extends RecyclerView.Adapter<HomePageContent
         LogUtils.d(this,"url-->asdasdadadasa-->"+content.get(1).getPictUrl());
         data.addAll(content);
         notifyDataSetChanged();
+    }
+
+    public void addData(List<HomePagerContent.DataBean> contents) {
+        //添加之前拿到原来的size
+        int olderSize = data.size();
+        data.addAll(contents);
+        //跟新ui
+        notifyItemChanged(olderSize,contents.size());
     }
 
     public class InnerHolder extends RecyclerView.ViewHolder {
@@ -80,8 +94,14 @@ public class HomePageContentAdapter extends RecyclerView.Adapter<HomePageContent
         public void setData(HomePagerContent.DataBean dataBean) {
             Context context = itemView.getContext();
             title.setText(dataBean.getTitle());
-            LogUtils.d(this,"url-->"+dataBean.getPictUrl());//发现没有协议开头
-            Glide.with(context).load(UrlUtils.getCoverPath(dataBean.getPictUrl())).into(cover);
+          //  LogUtils.d(this,"url-->"+dataBean.getPictUrl());//发现没有协议开头
+            ViewGroup.LayoutParams layoutParams = cover.getLayoutParams();
+            int width = layoutParams.width;
+            int height = layoutParams.height;
+            LogUtils.d(TAG,"width-->"+width+",height-->"+height);
+            int coverSize=(width>height?width:height)/2;
+
+            Glide.with(context).load(UrlUtils.getCoverPath(dataBean.getPictUrl(),coverSize)).into(cover);
             Integer couponAmount = dataBean.getCouponAmount();
             String finalPrise = dataBean.getZkFinalPrice();
             LogUtils.d(this,"finalPrise-->"+finalPrise);

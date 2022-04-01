@@ -5,7 +5,7 @@ public class UrlUtils {
         return "discovery/"+materialId+"/"+page;
     }
 
-    public static String getCoverPath(String pictUrl) {
-        return "https:"+pictUrl;
+    public static String getCoverPath(String pictUrl,int size) {
+        return "https:"+pictUrl+"_"+size+"x"+size+".jpg";
     }
 }

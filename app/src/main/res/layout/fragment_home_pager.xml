@@ -1,40 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/home_pager_parent"
     android:gravity="center"
     android:background="@color/colorPageBg">
 
-    <RelativeLayout
+    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="125dp"
-        android:layout_marginBottom="14dp">
+        android:id="@+id/home_pager_refresh"
+        app:tr_enable_overscroll="false"
+        android:layout_height="match_parent">
 
-        <androidx.viewpager.widget.ViewPager
-            android:layout_marginBottom="14dp"
+        <!--    解决上滑时，轮播图不上滑问题-->
+        <!--    ScrollView中只能有一个孩子-->
+        <com.lcodecore.tkrefreshlayout.views.TbNestedScrollView
             android:layout_width="match_parent"
-            android:id="@+id/looper_pager"
-            android:layout_height="125dp"
             android:overScrollMode="never"
-            />
+            android:id="@+id/home_pager_nest_scroll"
+            android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/looper_point_container"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-    </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/home_pager_header_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-<!--    标题-->
-    <include layout="@layout/include_home_pager_title_part"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="125dp"
+                        android:layout_marginBottom="14dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="11dp"
-        android:layout_width="match_parent"
-        android:id="@+id/home_pager_content_list"
-        android:layout_height="match_parent"/>
+                        <androidx.viewpager.widget.ViewPager
+                            android:layout_marginBottom="14dp"
+                            android:layout_width="match_parent"
+                            android:id="@+id/looper_pager"
+                            android:layout_height="125dp"
+                            android:overScrollMode="never"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:id="@+id/looper_point_container"
+                            android:gravity="center"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp"/>
+
+                    </RelativeLayout>
+
+                    <!--    标题-->
+                    <include layout="@layout/include_home_pager_title_part"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="11dp"/>
+
+                </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/home_pager_content_list"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </com.lcodecore.tkrefreshlayout.views.TbNestedScrollView>
+
+    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
 </LinearLayout>

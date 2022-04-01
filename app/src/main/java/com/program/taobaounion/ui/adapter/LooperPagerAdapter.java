@@ -35,9 +35,12 @@ public class LooperPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         //处理越界问题
         int realPosition = position % mdata.size();
-
         HomePagerContent.DataBean dataBean = mdata.get(realPosition);
-        String coverUrl = UrlUtils.getCoverPath(dataBean.getPictUrl());
+
+        int measuredHeight = container.getMeasuredHeight();
+        int measuredWidth = container.getMeasuredWidth();
+        int ivrSize=(measuredWidth>measuredHeight?measuredWidth:measuredHeight)/2;
+        String coverUrl = UrlUtils.getCoverPath(dataBean.getPictUrl(),ivrSize);
         ImageView iv=new ImageView(container.getContext());
         ViewGroup.LayoutParams layoutParams=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         iv.setLayoutParams(layoutParams);
