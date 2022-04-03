@@ -3,12 +3,21 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="测试"
+        android:id="@+id/test_toast_btn"
         android:onClick="showToast"
         android:textAllCaps="false"/>
+
+    <com.program.taobaounion.ui.custom.LoadingView
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_below="@id/test_toast_btn"
+        />
 
     <RadioGroup
         android:id="@+id/test_navigtion_bar"
@@ -16,6 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+
 
         <RadioButton
             android:id="@+id/test_home"

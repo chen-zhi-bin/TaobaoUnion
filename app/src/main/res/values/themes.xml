@@ -14,4 +14,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <declare-styleable name="AutoLoopStyle">
+        <attr name="duration" format="integer"/>
+    </declare-styleable>
+
 </resources>

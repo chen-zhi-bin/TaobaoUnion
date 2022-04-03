@@ -27,9 +27,10 @@ public class HomePageContentAdapter extends RecyclerView.Adapter<HomePageContent
 
     private static final String TAG="HomePageContentAdapter";
 
-    List<HomePagerContent.DataBean> data=new ArrayList<>();
+    List<HomePagerContent.DataBean> mData =new ArrayList<>();
 
     private int testCount = 1;
+    private OnListItemClickListener mItemClickListener=null;
 
     @NonNull
     @Override
@@ -42,27 +43,36 @@ public class HomePageContentAdapter extends RecyclerView.Adapter<HomePageContent
 
     @Override
     public void onBindViewHolder(@NonNull InnerHolder holder, int position) {
-        HomePagerContent.DataBean dataBean = data.get(position);
+        HomePagerContent.DataBean dataBean = mData.get(position);
         //设置数据
         holder.setData(dataBean);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mItemClickListener != null) {
+                    HomePagerContent.DataBean item = mData.get(position);
+                    mItemClickListener.onItemClick(item);
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return mData.size();
     }
 
     public void setData(List<HomePagerContent.DataBean> content) {
-        data.clear();
+        mData.clear();
         LogUtils.d(this,"url-->asdasdadadasa-->"+content.get(1).getPictUrl());
-        data.addAll(content);
+        mData.addAll(content);
         notifyDataSetChanged();
     }
 
     public void addData(List<HomePagerContent.DataBean> contents) {
         //添加之前拿到原来的size
-        int olderSize = data.size();
-        data.addAll(contents);
+        int olderSize = mData.size();
+        mData.addAll(contents);
         //跟新ui
         notifyItemChanged(olderSize,contents.size());
     }
@@ -113,5 +123,13 @@ public class HomePageContentAdapter extends RecyclerView.Adapter<HomePageContent
             originaPriseTv.setText(String.format(context.getString(R.string.text_goods_original_prise),finalPrise));
             sellCountTv.setText(String.format(context.getString(R.string.text_goods_sell_count),dataBean.getVolume()));
         }
+    }
+
+    public void setOnListItemClickListener(OnListItemClickListener listener){
+        this.mItemClickListener = listener;
+    }
+
+    public interface OnListItemClickListener{
+        void onItemClick(HomePagerContent.DataBean item);
     }
 }

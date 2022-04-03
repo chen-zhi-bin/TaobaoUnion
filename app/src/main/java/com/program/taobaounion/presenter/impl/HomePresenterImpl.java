@@ -4,7 +4,7 @@ import com.program.taobaounion.model.Api;
 import com.program.taobaounion.model.domain.Categories;
 import com.program.taobaounion.presenter.IHomePresenter;
 import com.program.taobaounion.utils.LogUtils;
-import com.program.taobaounion.utils.RetrofitManger;
+import com.program.taobaounion.utils.RetrofitManager;
 import com.program.taobaounion.view.IHomeCallback;
 
 import java.net.HttpURLConnection;
@@ -24,7 +24,7 @@ public class HomePresenterImpl implements IHomePresenter {
             mCallback.onLoading();
         }
         //加载分类数据
-        Retrofit retrofit = RetrofitManger.getInstance().getRetrofit();
+        Retrofit retrofit = RetrofitManager.getInstance().getRetrofit();
         Api api = retrofit.create(Api.class);
         Call<Categories> task = api.getCategories();
         task.enqueue(new Callback<Categories>() {

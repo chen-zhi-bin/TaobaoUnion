@@ -4,7 +4,7 @@ import com.program.taobaounion.model.Api;
 import com.program.taobaounion.model.domain.HomePagerContent;
 import com.program.taobaounion.presenter.ICateGoryPagerPresenter;
 import com.program.taobaounion.utils.LogUtils;
-import com.program.taobaounion.utils.RetrofitManger;
+import com.program.taobaounion.utils.RetrofitManager;
 import com.program.taobaounion.utils.UrlUtils;
 import com.program.taobaounion.view.ICategoryPagerCallback;
 
@@ -26,17 +26,7 @@ public class CategroyPagerPresenterImpl implements ICateGoryPagerPresenter {
     public static final int DEFAULT_PAGE=1;
     private Integer mCurrentPage;
 
-    private CategroyPagerPresenterImpl(){
 
-    }
-    private static ICateGoryPagerPresenter sInstance =null;
-
-    public static ICateGoryPagerPresenter getInstance(){
-        if (sInstance ==null) {
-            sInstance =new CategroyPagerPresenterImpl();
-        }
-        return sInstance;
-    }
 
     @Override
     public void getContentByCategoryId(int categoryId) {
@@ -80,7 +70,7 @@ public class CategroyPagerPresenterImpl implements ICateGoryPagerPresenter {
         String homePagerUrl = UrlUtils.createHomePagerUrl(categoryId, targetPage);
         LogUtils.d(this,"Url------->"+homePagerUrl);
         LogUtils.d(this,"homePagerUrl-->"+homePagerUrl);
-        Retrofit retrofit = RetrofitManger.getInstance().getRetrofit();
+        Retrofit retrofit = RetrofitManager.getInstance().getRetrofit();
         Api api=retrofit.create(Api.class);
         return api.getHomePagerContent(homePagerUrl);
     }

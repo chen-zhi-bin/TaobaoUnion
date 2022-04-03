@@ -1,12 +1,16 @@
 package com.program.taobaounion.ui.fragment;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.lcodecore.tkrefreshlayout.utils.LogUtil;
 import com.program.taobaounion.R;
 import com.program.taobaounion.base.BaseFragment;
 import com.program.taobaounion.model.domain.Categories;
@@ -14,6 +18,7 @@ import com.program.taobaounion.presenter.IHomePresenter;
 import com.program.taobaounion.presenter.impl.HomePresenterImpl;
 import com.program.taobaounion.ui.adapter.HomePagerAdapter;
 import com.program.taobaounion.utils.LogUtils;
+import com.program.taobaounion.utils.PresenterManager;
 import com.program.taobaounion.view.IHomeCallback;
 
 import butterknife.BindView;
@@ -41,6 +46,19 @@ public class HomeFragment extends BaseFragment implements IHomeCallback {
         homePager.setAdapter(mHomePagerAdapter);
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        LogUtils.d(this,"on create view..");
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        LogUtils.d(this,"on destroy view...");
+    }
+
     @Override
     protected void relese() {
         //取消注册
@@ -52,7 +70,7 @@ public class HomeFragment extends BaseFragment implements IHomeCallback {
     @Override
     protected void initPresenter() {
         //创建Presenter
-        mHomePresenter = new HomePresenterImpl();
+        mHomePresenter = PresenterManager.getInstance().getHomePresenter();
         mHomePresenter.registerViewCallback(this);
     }
 
