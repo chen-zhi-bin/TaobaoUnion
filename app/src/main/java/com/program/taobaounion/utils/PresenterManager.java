@@ -2,9 +2,11 @@ package com.program.taobaounion.utils;
 
 import com.program.taobaounion.presenter.ICateGoryPagerPresenter;
 import com.program.taobaounion.presenter.IHomePresenter;
+import com.program.taobaounion.presenter.ISeletedPagePresenter;
 import com.program.taobaounion.presenter.ITicketPresenter;
 import com.program.taobaounion.presenter.impl.CategroyPagerPresenterImpl;
 import com.program.taobaounion.presenter.impl.HomePresenterImpl;
+import com.program.taobaounion.presenter.impl.SelectedPagePresenterImpl;
 import com.program.taobaounion.presenter.impl.TicketPresenterImpl;
 
 public class PresenterManager {
@@ -12,6 +14,7 @@ public class PresenterManager {
     private final ICateGoryPagerPresenter mCategroyPagerPresenter;
     private final IHomePresenter mHomePresenter;
     private final ITicketPresenter mTickPresenter;
+    private final ISeletedPagePresenter mSelectedPagePresenter;
 
     public ICateGoryPagerPresenter getCategroyPagerPresenter() {
         return mCategroyPagerPresenter;
@@ -29,10 +32,15 @@ public class PresenterManager {
         return ourInstance;
     }
 
+    public ISeletedPagePresenter getSelectedPagePresenter() {
+        return mSelectedPagePresenter;
+    }
+
     private PresenterManager(){
         mCategroyPagerPresenter = new CategroyPagerPresenterImpl();
         mHomePresenter = new HomePresenterImpl();
         mTickPresenter = new TicketPresenterImpl();
+        mSelectedPagePresenter = new SelectedPagePresenterImpl();
     }
 
 

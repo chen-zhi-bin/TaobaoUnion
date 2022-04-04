@@ -14,6 +14,7 @@
     
     <color name="coloTabSelected">#fff</color>
     <color name="coloTabNormal">#99ffffff</color>
-    <color name="color_tmall">#D0021B</color>
+    <color name="colorTmall">#D0021B</color>
     <color name="colorPageBg">#EFEEEE</color>
+    <color name="colorEEEEEE">#EEEEEE</color>
 </resources>

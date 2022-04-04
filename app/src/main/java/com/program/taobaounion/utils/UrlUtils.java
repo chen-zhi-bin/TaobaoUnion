@@ -10,7 +10,11 @@ public class UrlUtils {
     }
 
     public static String getCoverPath(String pictUrl) {
-        return "https:"+pictUrl;
+        if (pictUrl.startsWith("http")||pictUrl.startsWith("https")){
+            return pictUrl;
+        }else {
+            return "https:"+pictUrl;
+        }
     }
 
     public static String getTicketUrl(String url) {
@@ -19,5 +23,9 @@ public class UrlUtils {
         }else {
             return "https:"+url;
         }
+    }
+
+    public static String getSelectedPageContentUrl(int categoryID) {
+        return "recommend/"+categoryID;
     }
 }
