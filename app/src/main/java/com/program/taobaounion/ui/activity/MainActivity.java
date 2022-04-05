@@ -1,35 +1,29 @@
  package com.program.taobaounion.ui.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.program.taobaounion.R;
 import com.program.taobaounion.base.BaseActivity;
 import com.program.taobaounion.base.BaseFragment;
 import com.program.taobaounion.ui.fragment.HomeFragment;
-import com.program.taobaounion.ui.fragment.RedPacketFragment;
+import com.program.taobaounion.ui.fragment.OnSellFragment;
 import com.program.taobaounion.ui.fragment.SearchFragment;
 import com.program.taobaounion.ui.fragment.SelectedFragment;
 import com.program.taobaounion.utils.LogUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
  public class MainActivity extends BaseActivity {
 
     @BindView(R.id.main_navigation_bar)
     public BottomNavigationView mNavigationView;
     private HomeFragment mHomeFragment;
-    private RedPacketFragment mRedPacketFragment;
+    private OnSellFragment mRedPacketFragment;
     private SearchFragment mSearchFragment;
     private SelectedFragment mSelectedFragment;
     private FragmentManager mFm;
@@ -58,7 +52,7 @@ import butterknife.Unbinder;
      private void initFragments() {
         mFm = getSupportFragmentManager();
         mHomeFragment = new HomeFragment();
-        mRedPacketFragment = new RedPacketFragment();
+        mRedPacketFragment = new OnSellFragment();
         mSearchFragment = new SearchFragment();
         mSelectedFragment = new SelectedFragment();
         //默认选中推荐，不然会出现空白页

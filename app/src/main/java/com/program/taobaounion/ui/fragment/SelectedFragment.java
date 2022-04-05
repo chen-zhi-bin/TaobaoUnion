@@ -2,15 +2,10 @@ package com.program.taobaounion.ui.fragment;
 
 import android.content.Intent;
 import android.graphics.Rect;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,8 +22,6 @@ import com.program.taobaounion.utils.LogUtils;
 import com.program.taobaounion.utils.PresenterManager;
 import com.program.taobaounion.utils.SizeUtils;
 import com.program.taobaounion.view.ISelectedPageCallback;
-
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -55,7 +48,7 @@ public class SelectedFragment extends BaseFragment implements ISelectedPageCallb
 
     @Override
     protected int getRootViewResId() {
-        return R.layout.fragment_selecter;
+        return R.layout.fragment_selected;
     }
 
     protected void initView(View rootView) {
