@@ -131,7 +131,7 @@ public class TicketActivity extends BaseActivity implements ITicketPagerCallback
 
     @Override
     public void onTicketLoaded(String cover, TicketResult result) {
-
+        //设置图片
         if (mCover != null&&!TextUtils.isEmpty(cover)) {
 //            ViewGroup.LayoutParams layoutParams = mCover.getLayoutParams();
 //            int tagetWidth = layoutParams.width/2;
@@ -139,8 +139,12 @@ public class TicketActivity extends BaseActivity implements ITicketPagerCallback
             String coverPath = UrlUtils.getCoverPath(cover);
             Glide.with(this).load(coverPath).into(mCover);
         }
+        if (TextUtils.isEmpty(cover)){
+            mCover.setImageResource(R.mipmap.no_image);
+        }
         LogUtils.d(this,"result-->"+result);
         LogUtils.d(this,"result.getData().getTbkTpwdCreateResponse-->"+result.getData().getTbk_tpwd_create_response());
+        //设置code
         if (result != null&&result.getData().getTbk_tpwd_create_response()!=null) {
             mTicketCode.setText(result.getData().getTbk_tpwd_create_response().getData().getModel());
             LogUtils.d(this,"Model -->"+result.getData().getTbk_tpwd_create_response().getData().getModel());

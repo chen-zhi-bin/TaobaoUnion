@@ -84,6 +84,7 @@ public class TicketPresenterImpl implements ITicketPresenter {
 
     @Override
     public void registerViewCallback(ITicketPagerCallback callback) {
+        this.mViewCallback = callback;
         if (mCurrentState!=LoadState.NONE){
             //说明状态已经改变了
             //更新UI
@@ -95,7 +96,6 @@ public class TicketPresenterImpl implements ITicketPresenter {
                 onTicketLoading();
             }
         }
-        this.mViewCallback = callback;
     }
 
     @Override

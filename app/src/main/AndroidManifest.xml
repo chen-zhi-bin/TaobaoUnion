@@ -25,6 +25,10 @@
             android:launchMode="singleTop">
 
         </activity>
+<!--    注册扫码-->
+        <activity android:name="com.program.taobaounion.ui.activity.ScanQrCodeActivity">
+
+        </activity>
     </application>
 
 </manifest>

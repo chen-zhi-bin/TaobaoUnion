@@ -367,6 +367,9 @@ setupState(State.EMPTY);
         if (mSearchPresenter != null) {
             mSearchList.scrollToPosition(0);
             mSearchInputBox.setText(text);
+            mSearchInputBox.setFocusable(true);
+            mSearchInputBox.requestFocus();
+            mSearchInputBox.setSelection(text.length(),text.length());
             mSearchPresenter.doSearch(text);
         }
     }

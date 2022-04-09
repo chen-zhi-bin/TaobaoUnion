@@ -18,7 +18,7 @@ import com.program.taobaounion.utils.LogUtils;
 
 import butterknife.BindView;
 
- public class MainActivity extends BaseActivity {
+ public class MainActivity extends BaseActivity implements IMainActivity{
 
     @BindView(R.id.main_navigation_bar)
     public BottomNavigationView mNavigationView;
@@ -59,6 +59,15 @@ import butterknife.BindView;
         switchFragment(mHomeFragment);
     }
 
+     /**
+      * 跳转到搜索见面
+      */
+    public void switch2Search(){
+//         switchFragment(mSearchFragment);
+         //切换导航栏的选中项
+        mNavigationView.setSelectedItemId(R.id.search);
+    }
+
 
      private void initListener() {
         mNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -93,6 +102,10 @@ import butterknife.BindView;
     private BaseFragment lastOneFragment = null;
 
     private void switchFragment(BaseFragment targetFragment) {
+        //如果上一个Fragment和当前要切换的fragment是同一个，那么不需要切换
+        if (lastOneFragment == targetFragment){
+            return;
+        }
          //修改成add和hide的方式来控制Fragment
         FragmentTransaction fragmentTransaction = mFm.beginTransaction();
         //如果没有添加就添加

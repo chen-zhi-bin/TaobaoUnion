@@ -1,12 +1,15 @@
 package com.program.taobaounion.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -16,10 +19,14 @@ import com.program.taobaounion.base.BaseFragment;
 import com.program.taobaounion.model.domain.Categories;
 import com.program.taobaounion.presenter.IHomePresenter;
 import com.program.taobaounion.presenter.impl.HomePresenterImpl;
+import com.program.taobaounion.ui.activity.IMainActivity;
+import com.program.taobaounion.ui.activity.MainActivity;
+import com.program.taobaounion.ui.activity.ScanQrCodeActivity;
 import com.program.taobaounion.ui.adapter.HomePagerAdapter;
 import com.program.taobaounion.utils.LogUtils;
 import com.program.taobaounion.utils.PresenterManager;
 import com.program.taobaounion.view.IHomeCallback;
+import com.vondear.rxfeature.activity.ActivityScanerCode;
 
 import butterknife.BindView;
 
@@ -31,6 +38,13 @@ public class HomeFragment extends BaseFragment implements IHomeCallback {
 
     @BindView(R.id.home_pager)
     public ViewPager homePager;
+
+    @BindView(R.id.home_search_input_box)
+    public View mSearchInputBox;
+
+    @BindView(R.id.scan_icon)
+    public View scanBtn;
+
     private HomePagerAdapter mHomePagerAdapter;
 
     @Override
@@ -44,6 +58,17 @@ public class HomeFragment extends BaseFragment implements IHomeCallback {
         //给ViewPager设置适配器
         mHomePagerAdapter = new HomePagerAdapter(getChildFragmentManager());
         homePager.setAdapter(mHomePagerAdapter);
+    }
+
+    @Override
+    protected void initListener() {
+        scanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到扫码界面
+                startActivity(new Intent(getContext(), ScanQrCodeActivity.class));
+            }
+        });
     }
 
     @Nullable
@@ -72,7 +97,17 @@ public class HomeFragment extends BaseFragment implements IHomeCallback {
         //创建Presenter
         mHomePresenter = PresenterManager.getInstance().getHomePresenter();
         mHomePresenter.registerViewCallback(this);
+        mSearchInputBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentActivity activity = getActivity();
+                if (activity instanceof IMainActivity) {
+                    ((IMainActivity) activity).switch2Search();
+                }
+            }
+        });
     }
+
 
     @Override
     protected View loadRootView(LayoutInflater inflater, ViewGroup container) {
