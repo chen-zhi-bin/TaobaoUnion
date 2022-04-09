@@ -3,11 +3,13 @@ package com.program.taobaounion.utils;
 import com.program.taobaounion.presenter.ICateGoryPagerPresenter;
 import com.program.taobaounion.presenter.IHomePresenter;
 import com.program.taobaounion.presenter.IOnsellPagePresenter;
+import com.program.taobaounion.presenter.ISearchPresenter;
 import com.program.taobaounion.presenter.ISeletedPagePresenter;
 import com.program.taobaounion.presenter.ITicketPresenter;
 import com.program.taobaounion.presenter.impl.CategroyPagerPresenterImpl;
 import com.program.taobaounion.presenter.impl.HomePresenterImpl;
 import com.program.taobaounion.presenter.impl.OnSellPagePresenterImpl;
+import com.program.taobaounion.presenter.impl.SearchPresenterImpl;
 import com.program.taobaounion.presenter.impl.SelectedPagePresenterImpl;
 import com.program.taobaounion.presenter.impl.TicketPresenterImpl;
 
@@ -18,6 +20,7 @@ public class PresenterManager {
     private final ITicketPresenter mTickPresenter;
     private final ISeletedPagePresenter mSelectedPagePresenter;
     private final IOnsellPagePresenter mOnSellPagePresenter;
+    private final ISearchPresenter mSearchPresenter;
 
     public ICateGoryPagerPresenter getCategroyPagerPresenter() {
         return mCategroyPagerPresenter;
@@ -43,12 +46,17 @@ public class PresenterManager {
         return mOnSellPagePresenter;
     }
 
+    public ISearchPresenter getSearchPresenter() {
+        return mSearchPresenter;
+    }
+
     private PresenterManager(){
         mCategroyPagerPresenter = new CategroyPagerPresenterImpl();
         mHomePresenter = new HomePresenterImpl();
         mTickPresenter = new TicketPresenterImpl();
         mSelectedPagePresenter = new SelectedPagePresenterImpl();
         mOnSellPagePresenter = new OnSellPagePresenterImpl();
+        mSearchPresenter = new SearchPresenterImpl();
     }
 
 

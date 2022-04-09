@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.program.taobaounion.model.domain.HomePagerContent;
+import com.program.taobaounion.model.domain.IBaseInfo;
 import com.program.taobaounion.utils.UrlUtils;
 
 import java.util.ArrayList;
@@ -86,6 +87,6 @@ public class LooperPagerAdapter extends PagerAdapter {
     }
 
     public interface OnLoopPagerItemClickListener{
-        void onLoopereItemClick(HomePagerContent.DataBean item);
+        void onLoopereItemClick(IBaseInfo item);
     }
 }

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#EFEEEE"
     android:layout_height="match_parent">
 
 
@@ -16,8 +19,17 @@
     <com.program.taobaounion.ui.custom.LoadingView
         android:layout_width="33dp"
         android:layout_height="33dp"
+        android:id="@+id/test_loading"
         android:layout_below="@id/test_toast_btn"
         />
+
+    <com.program.taobaounion.ui.custom.TextFlowLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/test_loading"
+        android:id="@+id/test_flow_text"
+        app:horizontalSpace="20dp"
+        app:verticalSpace = "20dp"
+        android:layout_height="wrap_content"/>
 
     <RadioGroup
         android:id="@+id/test_navigtion_bar"

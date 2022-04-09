@@ -2,7 +2,6 @@ package com.program.taobaounion.model.domain;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
 import java.util.List;
 public class HomePagerContent{
     /**
@@ -53,7 +52,7 @@ public class HomePagerContent{
         this.data = data;
     }
 
-    public static class DataBean{
+    public static class DataBean implements ILinearItemInfo {
         /**
          * category_id : 126492001
          * category_name : null
@@ -92,7 +91,7 @@ public class HomePagerContent{
         @SerializedName("commission_rate")
         private String commissionRate;
         @SerializedName("coupon_amount")
-        private Integer couponAmount;
+        private long couponAmount;
         @SerializedName("coupon_click_url")
         private String couponClickUrl;
         @SerializedName("coupon_end_time")
@@ -173,9 +172,6 @@ public class HomePagerContent{
             this.commissionRate = commissionRate;
         }
 
-        public Integer getCouponAmount() {
-            return couponAmount;
-        }
 
         public void setCouponAmount(Integer couponAmount) {
             this.couponAmount = couponAmount;
@@ -317,8 +313,18 @@ public class HomePagerContent{
             this.smallImages = smallImages;
         }
 
+        @Override
+        public String getCover() {
+            return pictUrl;
+        }
+
         public String getTitle() {
             return title;
+        }
+
+        @Override
+        public String getUrl() {
+            return couponClickUrl;
         }
 
         public void setTitle(String title) {
@@ -333,7 +339,17 @@ public class HomePagerContent{
             this.userType = userType;
         }
 
-        public Integer getVolume() {
+        @Override
+        public String getFinalPrise() {
+            return zkFinalPrice;
+        }
+
+        @Override
+        public long getCouponAmount() {
+            return couponAmount;
+        }
+
+        public long getVolume() {
             return volume;
         }
 

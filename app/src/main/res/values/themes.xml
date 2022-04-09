@@ -19,4 +19,12 @@
         <attr name="duration" format="integer"/>
     </declare-styleable>
 
+    <declare-styleable name="FlowTextStyle">
+<!--        水平间距-->
+        <attr name="horizontalSpace" format="dimension"/>
+<!--        垂直间距-->
+        <attr name="verticalSpace" format="dimension"/>
+
+   </declare-styleable>
+
 </resources>
