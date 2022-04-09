@@ -23,7 +23,7 @@ ui注入框架：[ButterKnife](https://github.com/JakeWharton/butterknife)
 
 主页内容:主页、精选、特惠、领券
 
-<img src="D:\aDemo\TaobaoUnion\img\主页.jpg" alt="主页" style="zoom:25%;" /><img src="D:\aDemo\TaobaoUnion\img\精选.jpg" alt="精选" style="zoom:25%;" /><img src="D:\aDemo\TaobaoUnion\img\特惠.jpg" alt="特惠" style="zoom:25%;" /><img src="D:\aDemo\TaobaoUnion\img\搜索.jpg" alt="搜索" style="zoom:25%;" />
+<img src="img\主页.jpg" alt="主页" style="zoom:25%;" /><img src="D:\aDemo\TaobaoUnion\img\精选.jpg" alt="精选" style="zoom:25%;" /><img src="D:\aDemo\TaobaoUnion\img\特惠.jpg" alt="特惠" style="zoom:25%;" /><img src="D:\aDemo\TaobaoUnion\img\搜索.jpg" alt="搜索" style="zoom:25%;" />
 
 <img src="D:\aDemo\TaobaoUnion\img\扫码.jpg" alt="扫码" style="zoom:25%;" />
 
