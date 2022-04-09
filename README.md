@@ -6,7 +6,6 @@ api文档地址：[阳光沙滩商城的API文档 (sunofbeach.net)](https://www.
 
 ### 使用知识：
 
-目前来说
 
 mvp架构思想
 
