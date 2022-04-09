@@ -121,7 +121,7 @@ public class HomePagerContent{
         @SerializedName("pict_url")
         private String pictUrl;
         @SerializedName("seller_id")
-        private Integer sellerId;
+        private long sellerId;
         @SerializedName("shop_title")
         private String shopTitle;
         @SerializedName("small_images")
@@ -289,11 +289,11 @@ public class HomePagerContent{
             this.pictUrl = pictUrl;
         }
 
-        public Integer getSellerId() {
+        public long getSellerId() {
             return sellerId;
         }
 
-        public void setSellerId(Integer sellerId) {
+        public void setSellerId(long sellerId) {
             this.sellerId = sellerId;
         }
 

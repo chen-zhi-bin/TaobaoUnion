@@ -48,7 +48,6 @@ public class CategroyPagerPresenterImpl implements ICateGoryPagerPresenter {
                 int code = response.code();
                 LogUtils.d(this,"code-->"+code);
                 if (code== HttpURLConnection.HTTP_OK) {
-                    LogUtils.d(this,"--========================================");
                     HomePagerContent pagerContent = response.body();
                     LogUtils.d(CategroyPagerPresenterImpl.this,"pagerContent-->"+pagerContent);
                     //把数据给到ui
@@ -60,7 +59,7 @@ public class CategroyPagerPresenterImpl implements ICateGoryPagerPresenter {
 
             @Override
             public void onFailure(Call<HomePagerContent> call, Throwable t) {
-                LogUtils.d(this,"t-->"+t.toString());
+                LogUtils.d(CategroyPagerPresenterImpl.this,"Throwable t-->"+t.toString());
                 handleNetworkError(categoryId);
             }
         });
@@ -132,7 +131,7 @@ public class CategroyPagerPresenterImpl implements ICateGoryPagerPresenter {
             @Override
             public void onFailure(Call<HomePagerContent> call, Throwable t) {
                 //请求失败
-                LogUtils.d(CategroyPagerPresenterImpl.this,t.toString());
+                LogUtils.d(CategroyPagerPresenterImpl.this,"Throwable t-->"+t.toString());
                 handleLoaderMoreError(categoryId);
             }
         });
